@@ -17,6 +17,6 @@ RUN apk add --no-cache --update ca-certificates bind
 # __CROSS__ Delete static qemu binary
 __CROSS__RUN rm -f /usr/bin/qemu-${QEMU_ARCH}-static
 
-COPY docker-entrypoint.sh /usr/bin/
+#COPY docker-entrypoint.sh /usr/bin/
 
-ENTRYPOINT ["/usr/bin/curl"]
+ENTRYPOINT ["/usr/bin/named"]
