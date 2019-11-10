@@ -4,13 +4,14 @@ build_date=${build_date:-$(date +"%Y%m%dT%H%M%S")}
 
 for docker_arch in amd64 arm32v6 arm64v8; do
     case ${docker_arch} in
-        amd64   ) qemu_arch="x86_64"  image_arch="amd64" ;;
-        arm32v6 ) qemu_arch="arm"     image_arch="arm"   ;;
-        arm64v8 ) qemu_arch="aarch64" image_arch="arm64" ;;    
+        amd64   ) qemu_arch="x86_64"  image_arch="amd64" s6_arch="amd64"   ;;
+        arm32v6 ) qemu_arch="arm"     image_arch="arm"   s6_arch="arm"     ;;
+        arm64v8 ) qemu_arch="aarch64" image_arch="arm64" s6_arch="aarch64" ;;    
     esac
     cp Dockerfile.cross Dockerfile.${docker_arch}
     sed -i "s|__BASEIMAGE_ARCH__|${docker_arch}|g" Dockerfile.${docker_arch}
     sed -i "s|__QEMU_ARCH__|${qemu_arch}|g" Dockerfile.${docker_arch}
+    sed -i "s|__S6_ARCH__|${s6_arch}|g" Dockerfile.${docker_arch}
     sed -i "s|__BIND_VER__|${bind_ver}|g" Dockerfile.${docker_arch}
     sed -i "s|__BUILD_DATE__|${build_date}|g" Dockerfile.${docker_arch}
     if [ ${docker_arch} == 'amd64' ]; then
