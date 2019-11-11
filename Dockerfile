@@ -1,7 +1,7 @@
 FROM amd64/alpine
 
 ENV BIND_VER=9.14.7-r5 \
-    BUILD_DATE=20191110T203700 \
+    BUILD_DATE=20191111T014259 \
     PARAMS=""
 
 LABEL build_version="Build-date: ${BUILD_DATE}"

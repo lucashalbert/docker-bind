@@ -1,4 +1,3 @@
-#!/usr/bin/with-contenv bash
+#!/usr/bin/execlineb -P
 
-exec \
-   s6-setuidgid abc named -g
+named -u abc -g
