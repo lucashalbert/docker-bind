@@ -1,7 +1,7 @@
 FROM amd64/alpine
 
 ENV BIND_VER=9.14.7-r5 \
-    BUILD_DATE=20191111T024756 \
+    BUILD_DATE=20191111T014259 \
     PARAMS=""
 
 LABEL build_version="Build-date: ${BUILD_DATE}"
@@ -20,7 +20,7 @@ RUN apk add --no-cache --update shadow bash bind \
     && useradd -u 911 -U -d /var/bind -s /bin/false abc \
     && usermod -G users abc 
 
-COPY etc/* /etc/
+ADD ./etc /etc
 
 
 # Expose DNS ports
