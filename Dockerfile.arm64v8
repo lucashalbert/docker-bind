@@ -1,7 +1,7 @@
 FROM arm64v8/alpine
 
 ENV BIND_VER=9.14.7-r5 \
-    BUILD_DATE=20191111T024756 \
+    BUILD_DATE=20191111T014259 \
     QEMU_ARCH=aarch64 \
     PARAMS=""
 
@@ -23,7 +23,7 @@ RUN apk add --no-cache --update shadow bash bind \
     && useradd -u 911 -U -d /var/bind -s /bin/false abc \
     && usermod -G users abc 
 
-COPY etc/* /etc/
+ADD ./etc /etc
 
 #  Delete static qemu binary
 RUN rm -f /usr/bin/qemu-${QEMU_ARCH}-static
