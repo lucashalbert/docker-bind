@@ -9,4 +9,3 @@ A multi-architecture bind image built on alpine linux. This image is compatible 
 [![Docker Layers](https://images.microbadger.com/badges/image/lucashalbert/bind.svg)][microbadger]
 [![Docker Pulls](https://img.shields.io/docker/pulls/lucashalbert/bind.svg)][dockerstore]
 [![Docker Stars](https://img.shields.io/docker/stars/lucashalbert/bind.svg)][dockerstore]
-
