@@ -1,7 +1,7 @@
 FROM amd64/alpine
 
-ENV BIND_VER=9.14.7-r5 \
-    BUILD_DATE=20191111T201150 \
+ENV BIND_VER=9.14.8-r5 \
+    BUILD_DATE=20200211T185637 \
     S6_BEHAVIOUR_IF_STAGE2_FAILS=2 \
     PARAMS=""
 
@@ -25,8 +25,10 @@ ADD ./etc /etc
 
 
 # Expose DNS ports
-EXPOSE 53/udp
-EXPOSE 53/tcp
+EXPOSE 53/udp 53/tcp
+
+# Expose RNDC ports
+EXPOSE 953/tcp
 
 # s6 overlay entrypoint
 ENTRYPOINT ["/init"]

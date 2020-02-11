@@ -30,8 +30,10 @@ ADD ./etc /etc
 __CROSS__RUN rm -f /usr/bin/qemu-${QEMU_ARCH}-static
 
 # Expose DNS ports
-EXPOSE 53/udp
-EXPOSE 53/tcp
+EXPOSE 53/udp 53/tcp
+
+# Expose RNDC ports
+EXPOSE 953/tcp
 
 # s6 overlay entrypoint
 ENTRYPOINT ["/init"]

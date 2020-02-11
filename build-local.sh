@@ -1,5 +1,5 @@
 #!/bin/bash
-bind_ver=${bind_ver:-$(curl "https://pkgs.alpinelinux.org/packages?name=bind&branch=edge&repo=main&arch=x86_64" | grep "text-success" | sed 's/<[^>]*>//g' | tr -d " ")}
+bind_ver=${bind_ver:-$(curl "https://pkgs.alpinelinux.org/packages?name=bind&branch=edge&repo=main&arch=x86_64" | grep 'text-success\|text-danger' | sed 's/<[^>]*>//g' | tr -d " ")}
 build_date=${build_date:-$(date +"%Y%m%dT%H%M%S")}
 
 for docker_arch in amd64 arm32v6 arm64v8; do
