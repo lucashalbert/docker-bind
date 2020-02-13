@@ -1,7 +1,7 @@
 FROM arm64v8/alpine
 
 ENV BIND_VER=9.14.8-r5 \
-    BUILD_DATE=20200211T185637 \
+    BUILD_DATE=20200213T104629 \
     S6_BEHAVIOUR_IF_STAGE2_FAILS=2 \
     QEMU_ARCH=aarch64 \
     PARAMS=""
@@ -17,7 +17,7 @@ COPY qemu-${QEMU_ARCH}-static /usr/bin/
 ADD https://github.com/just-containers/s6-overlay/releases/download/v1.22.1.0/s6-overlay-aarch64.tar.gz /tmp/
 RUN gunzip -c /tmp/s6-overlay-aarch64.tar.gz | tar -xf - -C /
 
-RUN apk add --no-cache --update shadow bash bind \
+RUN apk add --no-cache --update shadow bash tzdata bind bind-tools \
     && apk del --purge \
     && rm -rf /tmp/* \
     && groupmod -g 1000 users \
